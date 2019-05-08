@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>LocaCar</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Veiculos</h1>
+		</div>
+		
+		<form class="form-inline" method="POST" th:object="${v}"
+			th:action="@{/veiculos}" style="margin: 20px 0">
+			
+			<div class="form-group">
+			<input type="text" class="form-control" placeholder="Modelo" th:field="*{modelo}" />
+			<input type="text" class="form-control" placeholder="Marca" th:field="*{marca}" />
+			<input type="text" class="form-control" placeholder="Ano de Fabricacao" th:field="*{ano_fabricacao}" />
+			<input type="text" class="form-control" placeholder="cor" th:field="*{cor}" />
+			<button type="submit" class="btn btn-primary">Adicionar</button>
+			
+			</div>
+		</form>
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Modelo</th>
+							<th>Marca</th>
+							<th>Ano de Fabricacao</th>
+							<th>Cor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="veiculos : ${veiculos}">
+							<td th:text="${veiculos.modelo}"></td>
+							<td th:text="${veiculos.marca}"></td>
+							<td th:text="${veiculos.ano_fabricacao}"></td>
+							<td th:text="${veiculos.cor}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	</div>
+</body>
+</html>
